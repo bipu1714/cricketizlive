@@ -1,0 +1,594 @@
+/* style.css (For the Live Scorecard Page - Rectified with Desktop Height Adjustments) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap');
+
+:root {
+    --primary-header-bg: rgba(0, 123, 255, 0.85);
+    --secondary-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-bg: #ffffff;
+    --dark-text: #333333;
+    --light-text: #ffffff;
+    --border-color: #e0e0e0;
+    --font-family: 'Roboto', sans-serif;
+    --event-font-family: 'Montserrat', sans-serif;
+    --series-font-family: 'Oswald', sans-serif;
+    --header-title-font: 'Montserrat', sans-serif;
+
+    --info-loz-bg: rgba(0, 0, 0, 0.60);
+    --info-loz-text: #F5F5F5;
+
+    --footer-social-button-bg: rgba(0, 0, 0, 0.1);
+    --footer-social-button-text: #495057;
+    --footer-social-button-hover-bg: rgba(0, 0, 0, 0.15);
+
+    --primary-color: #007bff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: #f4f6f8;
+    color: var(--dark-text);
+    line-height: 1.6;
+    overscroll-behavior-y: contain;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: var(--primary-header-bg);
+    color: var(--light-text);
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-family: var(--header-title-font);
+    font-size: 1.8em;
+    font-weight: 700;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 4px black;
+    line-height: 1;
+}
+
+.series-banner {
+    margin-bottom: 5px;
+    padding: 5px 0;
+}
+
+#series-name-text {
+    display: block;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.70);
+    color: var(--info-loz-text);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-family: var(--font-family);
+    font-size: 0.85em;
+    font-weight: 500;
+    text-align: center;
+}
+
+main {
+    padding: 15px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === Cricket Score Banner Styles === */
+.cricket-score-banner {
+    background-color: #0D2A6E;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px 10px 20px 10px;
+    margin-bottom: 10px;
+    color: white;
+    position: relative;
+    overflow: visible;
+    min-height: 240px; /* Base height for mobile */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+.live-odi-tag {
+    background-color: #D80000;
+    color: white;
+    padding: 4px 15px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    z-index: 10;
+}
+
+.teams-info-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 5px;
+    margin-top: 15px;
+    position: relative;
+    z-index: 5;
+}
+
+.team-area {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.team-left {
+    text-align: left;
+}
+
+.team-right {
+    text-align: right;
+}
+
+.team-area .team-name {
+    font-size: 0.95em;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    color: #FFF;
+    text-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.12) 50%, transparent 100%);
+}
+
+.team-area .score-details {
+    display: flex;
+    align-items: center;
+}
+
+.team-right .score-details {
+    justify-content: flex-end;
+}
+
+
+.team-flag {
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #FFF;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 3;
+}
+
+.team-left .team-flag { margin-right: 18px; }
+.team-right .team-flag { margin-left: 18px; }
+
+.score-overs {
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+}
+.team-left .score-overs {
+    align-items: flex-start;
+    margin-right: 12px;
+}
+.team-right .score-overs {
+    align-items: flex-end;
+    margin-left: 12px;
+}
+
+.score-overs .score {
+    font-size: 1.3em;
+    font-weight: bold;
+    line-height: 1.1;
+    white-space: nowrap;
+    color: white;
+}
+
+.score-overs .overs {
+    font-size: 0.88em;
+    color: #DDD;
+    line-height: 1;
+    align-self: center;
+    text-align: center;
+    margin-top: 2px;
+    white-space: nowrap;
+}
+
+.vs-separator {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 0 0 3px rgba(0,0,0,0.5);
+    padding: 0 8px;
+    flex-shrink: 0;
+    margin-top: 48px;
+    align-self: flex-start;
+}
+
+.central-animation-area {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    margin-top: 0;
+    overflow: hidden;
+    z-index: 3;
+}
+
+.dynamic-event-display {
+    font-family: var(--event-font-family);
+    font-size: 1.8em;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    z-index: 10;
+    text-shadow: none;
+    line-height: 1.2;
+    padding: 2px 0;
+    transform: translateY(-5px);
+}
+
+.dynamic-event-display.wicket-text-style {
+    color: #FF4136;
+}
+
+.playing-cricket-image {
+    display: block;
+    height: 80px;
+    width: 100%;
+    max-width: 300px;
+    object-fit: contain;
+    position: absolute;
+    bottom: 11px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+
+/* Bottom Bar for Match Title & Run Rates */
+.banner-bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 10px;
+    font-size: 0.75em;
+    font-weight: 500;
+    z-index: 2;
+}
+
+.match-title-container {
+    flex-grow: 1;
+    text-align: left;
+    overflow: hidden;
+    margin-right: 5px;
+}
+
+#banner-match-title {
+    display: inline-block;
+    padding: 2px 6px;
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--info-loz-text);
+    border-radius: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-size: 1em;
+}
+
+.run-rates-container {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: var(--info-loz-text);
+    padding: 2px 5px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    font-size: 1em;
+}
+.run-rates-container .run-rate-separator {
+    display: inline;
+}
+
+
+/* === Styles for other sections === */
+.over-progress {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+}
+
+.ball-in-over {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--light-text);
+}
+.ball-in-over.run { background-color: var(--primary-color); color: white; }
+.ball-in-over.four { background-color: var(--primary-color); color: white; }
+.ball-in-over.six { background-color: var(--secondary-color); color: var(--dark-text); }
+.ball-in-over.wicket { background-color: var(--danger-color); color: white; }
+.ball-in-over.dot { background-color: #777; color: white; }
+
+.player-stats {
+    margin-bottom: 10px;
+}
+
+.stats-banner {
+    background-color: var(--light-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 6px 8px;
+    margin-bottom: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+}
+.stats-banner:last-child {
+    margin-bottom: 0;
+}
+
+
+.stats-banner h3 {
+    font-size: 1.0em;
+    margin-bottom: 6px;
+    color: var(--primary-color);
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 4px;
+}
+
+.stats-banner table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+    table-layout: fixed;
+}
+
+.stats-banner th, .stats-banner td {
+    padding: 4px 3px;
+    border-bottom: 1px solid #f0f0f0;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stats-banner th {
+    font-weight: 500;
+    color: #555;
+}
+
+.stats-banner th:first-child,
+.stats-banner td:first-child {
+    width: 30%;
+    text-align: left;
+}
+
+.batter-stats th:not(:first-child),
+.batter-stats td:not(:first-child) {
+    width: 14%;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.bowler-stats th:not(:first-child),
+.bowler-stats td:not(:first-child) {
+    width: 14%;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+.stats-banner tr:last-child td {
+    border-bottom: none;
+}
+
+.live-commentary {
+    background-color: var(--light-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+    margin-top: 10px;
+}
+.live-commentary h3 {
+    font-size: 1.0em;
+    margin-bottom: 6px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.commentary-box {
+    height: 120px; /* Base height for mobile */
+    overflow-y: auto;
+    padding: 6px 8px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-color: #fdfdfd;
+    font-size: 0.85em;
+    line-height: 1.45;
+}
+.commentary-box p {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #eee;
+}
+.commentary-box p:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+/* === Site Footer Styles === */
+.site-footer {
+    background-color: var(--light-bg);
+    color: #555;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+    padding: 15px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+.footer-content p {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1.3;
+}
+
+.copyright-text { }
+
+.api-attribution {
+    font-style: italic;
+    font-size: 0.9em;
+    margin-top: 3px;
+    margin-bottom: 12px;
+}
+
+#api-provider-name {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.social-media-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0;
+    flex-wrap: wrap;
+}
+
+.social-link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    background-color: var(--footer-social-button-bg);
+    color: var(--footer-social-button-text);
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.85em;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    margin: 5px;
+    min-width: 120px;
+}
+
+.social-link-button:hover {
+    background-color: var(--footer-social-button-hover-bg);
+    color: var(--primary-color);
+}
+
+.social-icon-in-button {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    margin-right: 6px;
+}
+
+.social-text-label { }
+
+/* === End of Site Footer Styles === */
+
+
+.match-result-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.match-result-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.result-content {
+    background-color: var(--light-bg);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    transform: scale(0.5);
+    animation: resultPopup 0.5s forwards cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes resultPopup {
+    to { transform: scale(1); }
+}
+
+.result-content img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.result-content h2 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+}
+
+/* --- DESKTOP-ONLY STYLES --- */
+@media (min-width: 768px) { /* Apply for viewports 768px and wider */
+    .cricket-score-banner {
+        min-height: 300px; /* 240px * 1.25 = 300px */
+    }
+
+    .commentary-box {
+        height: 360px; /* 120px * 3 = 360px */
+    }
+}

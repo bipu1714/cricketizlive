@@ -1,0 +1,157 @@
+/* admin-style.css (REVISED for better aesthetics and layout) */
+:root {
+    /* New Color Palette for a more standard Admin Look */
+    --admin-page-bg: #f4f6f8;         /* Light grey for the overall page background */
+    --admin-content-bg: #ffffff;      /* White for cards/content areas */
+    --admin-header-bg: #343a40;       /* Dark grey/black for header */
+    --admin-text-dark: #333333;       /* Primary text color on light backgrounds */
+    --admin-text-light: #ffffff;      /* Text color on dark backgrounds (like header) */
+    --admin-text-muted: #6c757d;      /* Muted text for labels, placeholders */
+    --admin-primary: #007bff;         /* Standard blue for primary actions */
+    --admin-secondary: #6c757d;      /* Standard grey for secondary actions */
+    --admin-success: #28a745;        /* Green for success */
+    --admin-danger: #dc3545;         /* Red for danger/logout */
+    --admin-info: #17a2b8;           /* Teal/Info color for Fetch button */
+    --admin-input-bg: #ffffff;        /* White background for inputs */
+    --admin-input-border: #ced4da;    /* Light grey border for inputs */
+    --admin-input-focus-border: #80bdff; /* Blue border on focus */
+    --admin-input-focus-shadow: rgba(0, 123, 255, 0.25);
+    --admin-border-color: #dee2e6;    /* Dividers and card borders */
+
+    --font-roboto: 'Roboto', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-oswald: 'Oswald', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-roboto);
+    background-color: var(--admin-page-bg); /* Light page background */
+    color: var(--admin-text-dark);      /* Dark text for readability */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 15px;
+}
+
+/* --- Login Screen (Keeping dark theme for contrast) --- */
+#admin-login-screen { display: flex; justify-content: center; align-items: center; flex-grow: 1; padding: 20px; background-color: #2c3e50; }
+.login-container { background-color: #34495e; padding: 35px 45px; border-radius: 8px; box-shadow: 0 8px 15px rgba(0,0,0,0.2); width: 100%; max-width: 420px; text-align: center; }
+.login-container h2 { font-family: var(--font-poppins); margin-bottom: 30px; color: var(--admin-text-light); font-size: 1.8em; }
+.login-container .input-group { margin-bottom: 20px; text-align: left; }
+.login-container label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9em; color: #bdc3c7; }
+.login-container input[type="text"], .login-container input[type="password"] { width: 100%; padding: 12px 15px; background-color: #2c3e50; border: 1px solid #466380; border-radius: 5px; color: var(--admin-text-light); font-size: 1em; transition: border-color 0.2s ease; }
+.login-container input[type="text"]:focus, .login-container input[type="password"]:focus { border-color: var(--admin-primary); outline: none; box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.3); }
+.login-container input::placeholder { color: #7f8c8d; }
+#login-button { background: var(--admin-primary); color: white; border: none; padding: 12px 0; width: 100%; border-radius: 5px; font-size: 1.1em; font-weight: 700; cursor: pointer; transition: background-color 0.2s ease; }
+#login-button:hover { background-color: #0056b3; }
+
+/* --- Main Admin Content --- */
+#admin-main-content { display: flex; flex-direction: column; flex-grow: 1; }
+.admin-header { background-color: var(--admin-header-bg); color: var(--admin-text-light); padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #495057; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.admin-header h1 { font-family: var(--font-montserrat); font-size: 1.5em; text-transform: none; }
+#logout-button { background-color: var(--admin-danger); color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: 500; transition: background-color 0.2s ease;}
+#logout-button:hover { background-color: #c82333; }
+
+.series-banner-admin { background-color: #e9ecef; color: var(--admin-text-dark); padding: 10px 25px; text-align: center; font-size: 0.9em; border-bottom: 1px solid var(--admin-border-color); }
+#admin-series-name-display { font-weight: 700; color: var(--admin-primary); }
+
+.admin-dashboard-main { padding: 20px; flex-grow: 1; overflow-y: auto; }
+.admin-dashboard-layout { display: grid; grid-template-columns: 1fr; gap: 25px; }
+
+.admin-preview-section, .admin-control-panel { background-color: var(--admin-content-bg); padding: 25px; border-radius: 8px; border: 1px solid var(--admin-border-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.admin-preview-section h3, .admin-control-panel h2 { font-family: var(--font-poppins); margin-top: 0; margin-bottom: 25px; text-align: center; border-bottom: 1px solid var(--admin-border-color); padding-bottom: 15px; color: var(--admin-text-dark); }
+.admin-control-panel h3 { font-family: var(--font-montserrat); font-size: 1.15em; margin-top: 30px; margin-bottom: 20px; color: var(--admin-primary); }
+
+.iframe-preview-container { width: 100%; max-width: 375px; height: 667px; border: 10px solid #333; border-radius: 20px; margin: 20px auto; box-shadow: 0 5px 25px rgba(0,0,0,0.15); overflow: hidden; background-color: #111; padding: 0; }
+#scorecard-preview-iframe { width: 100%; height: 100%; border: none; display: block; border-radius: 10px; }
+.preview-note { font-size: 0.85em; text-align: center; color: var(--admin-text-muted); margin-top: 10px; margin-bottom: 15px; }
+
+.section-divider { border: 0; border-top: 1px solid var(--admin-border-color); margin: 30px 0; }
+.control-group { margin-bottom: 20px; }
+.control-group label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9em; color: var(--admin-text-muted);}
+.control-group input[type="text"], .control-group input[type="file"] { width: 100%; padding: 10px 12px; background-color: var(--admin-input-bg); border: 1px solid var(--admin-input-border); border-radius: 4px; color: var(--admin-text-dark); font-size: 0.95em; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.control-group input[type="text"]:focus, .control-group input[type="file"]:focus { border-color: var(--admin-input-focus-border); outline: none; box-shadow: 0 0 0 0.2rem var(--admin-input-focus-shadow); }
+.control-group input[type="file"] { background-color: #f8f9fa; }
+
+.button-fetch-api { background-color: var(--admin-info); color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9em; font-weight: 500; transition: background-color 0.2s ease; display: inline-block; margin-top: 10px; }
+.button-fetch-api:hover { background-color: #117a8b; }
+
+.teams-config-container { display: grid; grid-template-columns: 1fr; gap: 25px; } 
+.team-config-group h4 { font-family: var(--font-oswald); font-size: 1.1em; margin-bottom: 15px; color: var(--admin-text-dark); border-bottom: 1px dashed var(--admin-border-color); padding-bottom: 8px; }
+
+.preview-actions { margin-top: 20px; display: flex; gap: 10px; /* Reduced gap for potentially tighter fit */ justify-content: center; flex-wrap: wrap; }
+.preview-actions button { padding: 10px 15px; /* Slightly reduced padding */ border: none; border-radius: 5px; font-size: 0.90em; /* Slightly reduced font */ font-weight: 600; cursor: pointer; transition: transform 0.1s ease, opacity 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.preview-actions button:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+.button-primary { background-color: var(--admin-primary); color: white; }
+.button-secondary { background-color: var(--admin-secondary); color: white; } /* Style for OBS button */
+.button-go-live { background-color: var(--admin-success); color: white; }
+
+.admin-footer-config-display { background-color: var(--admin-content-bg); padding: 20px 25px; text-align: center; font-size: 0.85em; border-top: 1px solid var(--admin-border-color); margin-top: auto; box-shadow: 0 -2px 5px rgba(0,0,0,0.05);}
+.admin-footer-config-display p { margin: 5px 0; color: var(--admin-text-muted); }
+#admin-public-api-key-display { font-weight: bold; color: var(--admin-primary); }
+
+.status-message { margin-top: 15px; padding: 10px 15px; border-radius: 4px; font-size: 0.9em; text-align: center; border-width: 1px; border-style: solid; }
+.status-message:empty { display: none; }
+.status-message.success { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
+.status-message.error { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+.status-message.info { background-color: #d1ecf1; color: #0c5460; border-color: #bee5eb; }
+.preview-status-message { max-width: 375px; margin-left: auto; margin-right: auto; }
+
+@media (min-width: 768px) {
+    .teams-config-container { grid-template-columns: 1fr 1fr; }
+    .preview-actions button { width: auto; /* Allow buttons to size by content on tablets */ }
+}
+@media (min-width: 992px) {
+    .admin-dashboard-layout { grid-template-columns: auto 1fr; gap: 30px; } 
+    .admin-preview-section { order: 1; display: flex; flex-direction: column; align-items: center; min-width: 400px; }
+    .admin-control-panel { order: 2; }
+    .iframe-preview-container { margin: 20px auto; }
+    .preview-actions { justify-content: center; width: 100%; max-width: 375px; /* Align with iframe */ }
+    .preview-actions button { flex-grow: 1; } /* Let buttons share space if they fit */
+    .preview-status-message { margin-left: auto; margin-right: auto; text-align: center; width: 100%; max-width: 375px;}
+}
+
+/* === MOBILE RESPONSIVENESS ENHANCEMENTS === */
+@media (max-width: 767px) { 
+    body { font-size: 14px; }
+    .admin-header h1 { font-size: 1.3em; } .admin-header { padding: 10px 15px; }
+    .series-banner-admin { padding: 8px 15px; font-size: 0.85em; }
+    .admin-dashboard-main { padding: 15px; }
+    .admin-preview-section h3, .admin-control-panel h2 { font-size: 1.4em; margin-bottom: 15px; padding-bottom: 8px; }
+    .admin-control-panel h3 { font-size: 1.1em; }
+    .admin-preview-section, .admin-control-panel { padding: 15px; }
+    .iframe-preview-container { max-width: 100%; width: 320px; height: 568px; border-width: 8px; border-radius: 16px; }
+    .preview-note { font-size: 0.8em; }
+    .control-group label { font-size: 0.85em; }
+    .control-group input[type="text"], .control-group input[type="file"] { padding: 8px 10px; font-size: 0.9em; }
+    .teams-config-container { grid-template-columns: 1fr; }
+    
+    /* UPDATED for 3 buttons on mobile: stack them */
+    .preview-actions button { 
+        padding: 10px 18px; 
+        font-size: 0.9em; 
+        width: 100%; /* Make all buttons full width for stacking */
+    }
+    .preview-actions button:not(:last-child) { /* Add margin between stacked buttons */
+        margin-bottom: 10px;
+    }
+    .preview-actions { 
+        justify-content: center; /* Center the stacked buttons */
+    }
+     
+    .admin-footer-config-display { padding: 10px 15px; font-size: 0.8em; }
+    .login-container { padding: 25px 20px; max-width: 90%; }
+    .login-container h2 { font-size: 1.5em; }
+    .login-container input[type="text"], .login-container input[type="password"] { padding: 10px 12px; }
+    #login-button { padding: 10px 0; font-size: 1em; }
+}
+
+@media (max-width: 480px) {
+    .iframe-preview-container { width: 100%; max-width: calc(100vw - 40px); height: calc((100vw - 40px) * 1.77); border-width: 6px; border-radius: 12px; }
+    .admin-header h1 { font-size: 1.2em; }
+    .preview-actions button { font-size: 0.85em; /* Already width: 100% from above breakpoint */ }
+}

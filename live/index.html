@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>cricketizlive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>cricketizlive</h1>
+    </header>
+
+    <div class="series-banner">
+        <span id="series-name-text">EVENT: ICC T20 World Cup 2024</span>
+    </div>
+
+    <main>
+        <section class="cricket-score-banner">
+            <div class="live-odi-tag" id="banner-match-status-tag">LIVE | ODI</div>
+
+            <div class="teams-info-grid">
+                <div class="team-area team-left">
+                    <div class="team-name" id="banner-team1-name">Ireland</div>
+                    <div class="score-details">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Flag_of_Ireland.svg/255px-Flag_of_Ireland.svg.png" alt="Team 1 Flag" id="banner-team1-flag" class="team-flag">
+                        <div class="score-overs">
+                            <span class="score" id="banner-team1-score">379-10</span>
+                            <span class="overs" id="banner-team1-overs">49.5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vs-separator">VS</div>
+
+                <div class="team-area team-right">
+                    <div class="team-name" id="banner-team2-name">West Indies</div>
+                    <div class="score-details">
+                        <div class="score-overs">
+                            <span class="score" id="banner-team2-score">0-0</span>
+                            <span class="overs" id="banner-team2-overs">0.0</span>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_the_West_Indies_Federation.svg/255px-Flag_of_the_West_Indies_Federation.svg.png" alt="Team 2 Flag" id="banner-team2-flag" class="team-flag">
+                    </div>
+                </div>
+            </div>
+
+            <div class="central-animation-area">
+                <div class="dynamic-event-display" id="dynamic-event-text"></div>
+                <img src="playingcricket.png" alt="Players Playing Cricket" class="playing-cricket-image">
+            </div>
+
+            <div class="banner-bottom-bar">
+                <div class="match-title-container">
+                    <span id="banner-match-title">MATCH 7: India vs Pakistan</span>
+                </div>
+                <div class="run-rates-container">
+                    <span id="banner-crr">CRR: 0.00</span>
+                    <span class="run-rate-separator"> | </span>
+                    <span id="banner-rr">RR: 0.0</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="over-progress">
+            <div class="ball-in-over" data-ball="1"></div>
+            <div class="ball-in-over" data-ball="2"></div>
+            <div class="ball-in-over" data-ball="3"></div>
+            <div class="ball-in-over" data-ball="4"></div>
+            <div class="ball-in-over" data-ball="5"></div>
+            <div class="ball-in-over" data-ball="6"></div>
+        </section>
+
+        <section class="player-stats">
+            <div class="stats-banner batter-stats">
+                <h3>BATTER</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Batter</th>
+                            <th>R</th>
+                            <th>B</th>
+                            <th>4s</th>
+                            <th>6s</th>
+                            <th>SR</th>
+                        </tr>
+                    </thead>
+                    <tbody id="batter-tbody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="stats-banner bowler-stats">
+                <h3>BOWLER</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bowler</th>
+                            <th>O</th>
+                            <th>M</th>
+                            <th>R</th>
+                            <th>W</th>
+                            <th>ER</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bowler-tbody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="live-commentary">
+            <h3>Live Commentary</h3>
+            <div id="commentary-box" class="commentary-box">
+                Welcome to the match!
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-content">
+                <p class="copyright-text">© 2025 cricketizlive. All rights reserved.</p>
+                <p class="api-attribution">Live scores powered by <span id="api-provider-name">{{apiProviderName}}</span></p>
+                <div class="social-media-icons">
+                    <a href="https://www.facebook.com/share/1CGBH4H9UW/" target="_blank" rel="noopener noreferrer" class="social-link-button facebook-button" aria-label="Visit our Facebook page">
+                        <svg class="social-icon-in-button" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 3H4a1 1 0 00-1 1v16a1 1 0 001 1h8.615v-6.96h-2.338v-2.725h2.338v-2.005c0-2.314 1.37-3.593 3.494-3.593.998 0 1.857.074 2.106.106v2.426h-1.43c-1.13 0-1.35.536-1.35 1.325v1.745h2.697l-.35 2.725h-2.347V21H20a1 1 0 001-1V4a1 1 0 00-1-1z"/>
+                        </svg>
+                        <span class="social-text-label">FACEBOOK</span>
+                    </a>
+                    <a href="https://youtube.com/@cricketizlive?si=OGRAOXfLVoWcLeae" target="_blank" rel="noopener noreferrer" class="social-link-button youtube-button" aria-label="Visit our YouTube channel">
+                        <svg class="social-icon-in-button" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.582 7.443c-.23-.84-.895-1.506-1.736-1.736C18.257 5.29 12 5.29 12 5.29s-6.257 0-7.846.417c-.84.23-1.506.895-1.736 1.736C2 9.033 2 12 2 12s0 2.967.418 4.557c.23.84.895 1.506 1.736 1.736C5.743 18.71 12 18.71 12 18.71s6.257 0 7.846-.417c.84-.23 1.506-.895 1.736-1.736C22 14.967 22 12 22 12s0-2.967-.418-4.557zM9.75 14.85V9.15l4.742 2.85-4.743 2.85z"/>
+                        </svg>
+                        <span class="social-text-label">YOUTUBE</span>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <div id="match-result-overlay" class="match-result-overlay">
+        <div class="result-content">
+            <img src="https://via.placeholder.com/80x80/007bff/ffffff?Text=WIN" alt="Winner Logo" id="winner-logo">
+            <h2 id="match-winner-text">Team X Wins!</h2>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

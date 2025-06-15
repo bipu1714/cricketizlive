@@ -1,0 +1,296 @@
+/* style.css (For the new Welcome Page - index.html) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap');
+
+:root {
+    --welcome-page-bg: #f7f9fc;
+    --welcome-text-primary: #2c3e50;
+    --welcome-text-secondary: #566573;
+    --brand-font-welcome: 'Oswald', sans-serif;
+    --hero-contact-font-welcome: 'Lora', serif;
+    --body-font-welcome: 'Roboto', sans-serif;
+    --divider-color-welcome: #ced4da;
+    --link-color-welcome: #007bff;
+    --button-bg-welcome: rgba(0, 123, 255, 0.85);
+    --button-text-welcome: #ffffff;
+    --button-hover-bg-welcome: #0056b3;
+
+    --card-bg: rgba(255, 255, 255, 0.95); /* Made slightly more opaque for better definition */
+    --card-border-color: #e0e0e0;
+    --card-box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Softened shadow slightly */
+
+    --footer-bg: #ffffff; /* This is for the welcome-contact-footer-section now */
+    --footer-text-color: #555;
+    --footer-border-color: var(--card-border-color);
+    --contact-footer-box-shadow: var(--card-box-shadow);
+    --social-button-bg-welcome: #e9ecef;
+    --social-button-text-welcome: #343a40;
+    --social-button-border-welcome: #ced4da;
+    --social-button-hover-bg-welcome: #dee2e6;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+    font-family: var(--body-font-welcome);
+    background-color: var(--welcome-page-bg);
+    color: var(--welcome-text-secondary);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.welcome-page-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.welcome-content-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    padding-top: 40px;
+}
+
+.welcome-brand-display {
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.brand-name-large {
+    font-family: var(--brand-font-welcome);
+    font-size: 3.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--welcome-text-primary);
+    letter-spacing: 1.5px;
+    margin: 0;
+}
+
+/* Card for Hero Tagline and Status Box */
+.hero-status-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border-color);
+    border-radius: 10px; /* Slightly more rounded */
+    box-shadow: var(--card-box-shadow);
+    padding: 25px 20px; /* Adjusted padding */
+    width: 100%;
+    max-width: 580px; /* Max width for this card */
+    margin-bottom: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center children */
+}
+
+.welcome-hero {
+    margin-bottom: 20px; /* Space between tagline and status info container */
+    width: 100%; /* Ensure hero takes width for text centering */
+}
+
+.hero-tagline {
+    font-family: var(--hero-contact-font-welcome);
+    font-size: 3.0em; /* INCREASED */
+    font-weight: 500;
+    line-height: 1.4;  /* INCREASED for better line separation */
+    color: var(--welcome-text-primary);
+    margin: 0;
+}
+
+.welcome-status-info { /* Container for status-box and button */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center status-box and button */
+    width: 100%; /* Take full width to allow status-box to center */
+    margin-top: 10px; /* Space above status box */
+}
+
+.status-box {
+    background-color: #e9ecef; /* Light grey inner box */
+    padding: 10px 15px; /* Minimal horizontal padding, keep vertical reasonable */
+    border-radius: 6px; /* Slightly less rounded than outer card */
+    border: 1px solid #dae0e5;
+    width: auto; /* Let content define initial width */
+    display: inline-block; /* Allow shrink-to-fit */
+    margin-bottom: 15px; /* Space before optional button */
+    text-align: center; /* Center text if it wraps */
+    max-width: 90%; /* Prevent it from getting too wide on very short text */
+}
+
+.status-message {
+    font-size: 1em; /* Keep font size as is */
+    font-weight: 500;
+    color: var(--welcome-text-secondary);
+    margin-bottom: 4px; /* Tighter spacing between lines */
+    white-space: normal; /* Allow wrapping if text is long, width is now auto */
+}
+
+.check-back-later {
+    font-size: 0.85em; /* Keep font size as is */
+    color: #6c757d;
+    white-space: normal;
+}
+
+.view-scores-button-welcome {
+    display: inline-block;
+    background-color: var(--button-bg-welcome);
+    color: var(--button-text-welcome);
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-family: var(--body-font-welcome);
+    margin-top: 10px;
+}
+.view-scores-button-welcome:hover {
+    background-color: var(--button-hover-bg-welcome);
+    transform: translateY(-1px);
+}
+
+/* Combined Contact and Footer Section Styling (remains a card) */
+.welcome-contact-footer-section {
+    background-color: var(--card-bg);
+    color: var(--footer-text-color);
+    border-radius: 10px;
+    box-shadow: var(--card-box-shadow);
+    border: 1px solid var(--card-border-color);
+    padding: 20px; /* Adjusted padding for compactness */
+    margin-top: 0; /* Stacks directly after hero-status-card */
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 580px; /* Consistent max-width */
+}
+
+.contact-part {
+    margin-bottom: 10px;
+}
+
+.contact-heading {
+    font-family: var(--hero-contact-font-welcome);
+    font-size: 1.6em;
+    font-weight: 400;
+    color: var(--welcome-text-primary);
+    margin: 0 0 5px 0;
+}
+
+.contact-divider {
+    width: 60px;
+    height: 1px;
+    background-color: var(--divider-color-welcome);
+    border: none;
+    margin: 0 auto 10px auto;
+}
+
+.contact-intro-text {
+    font-size: 0.9em;
+    color: var(--welcome-text-secondary);
+    margin-bottom: 2px;
+}
+
+.contact-info {
+    font-size: 0.9em;
+    margin-bottom: 0;
+}
+.contact-info a {
+    color: var(--link-color-welcome);
+    text-decoration: none;
+    font-weight: 500;
+}
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.footer-divider-spacing {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.footer-part-content { }
+
+.copyright-text {
+    font-size: 0.85em;
+    color: var(--footer-text-color);
+    margin-bottom: 8px;
+}
+
+.social-media-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 0;
+}
+
+.social-link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px;
+    background-color: var(--social-button-bg-welcome);
+    color: var(--social-button-text-welcome);
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+    margin: 5px;
+    min-width: 130px;
+    border: 1px solid var(--social-button-border-welcome);
+}
+
+.social-link-button:hover {
+    background-color: var(--social-button-hover-bg-welcome);
+    transform: translateY(-1px);
+}
+
+.social-icon-in-button {
+    width: 18px;
+    height: 18px;
+    fill: var(--social-button-text-welcome);
+    margin-right: 8px;
+}
+
+.social-text-label {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+@media (max-width: 768px) {
+    .brand-name-large { font-size: 2.8em; }
+    .hero-tagline { font-size: 2.6em; line-height: 1.35; }
+    .contact-heading { font-size: 1.6em; }
+    .status-message { font-size: 1em; }
+    .hero-status-card, .welcome-contact-footer-section { padding: 20px 15px; max-width: 95%;}
+}
+
+@media (max-width: 480px) {
+    .brand-name-large { font-size: 2.2em; } /* Adjusted for better fit */
+    .hero-tagline { font-size: 2.0em; line-height: 1.3; } /* Adjusted for better fit */
+    .contact-heading { font-size: 1.4em; }
+    .status-message { font-size: 0.9em; } /* Adjusted for better fit */
+    .check-back-later { font-size: 0.8em; } /* Adjusted for better fit */
+    .view-scores-button-welcome { padding: 8px 18px; font-size: 0.85em; }
+    .hero-status-card, .welcome-contact-footer-section { padding: 15px 10px; }
+    .social-link-button { min-width: 100px; padding: 6px 10px; font-size: 0.8em;}
+    .copyright-text { font-size: 0.8em; }
+    .contact-intro-text, .contact-info { font-size: 0.85em; }
+    .status-box { padding: 10px; }
+}

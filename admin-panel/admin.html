@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricketizlive - Admin Panel</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@700&family=Montserrat:wght@500;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+    <div id="admin-login-screen">
+        <div class="login-container">
+            <h2>Admin Panel Login</h2>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username" autocomplete="username">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" autocomplete="current-password">
+            </div>
+            <button id="login-button">Login</button>
+            <p id="login-error" class="status-message"></p>
+        </div>
+    </div>
+
+    <div id="admin-main-content" style="display: none;">
+        <header class="admin-header">
+            <h1>cricketizlive - Admin</h1>
+            <button id="logout-button">Logout</button>
+        </header>
+
+        <div class="series-banner-admin">
+            Editing for Series: <strong id="admin-series-name-display">Not Set</strong>
+        </div>
+
+        <main class="admin-dashboard-main">
+            <div class="admin-dashboard-layout">
+                <section class="admin-preview-section">
+                    <h3>Scorecard Preview (Live Viewer Replica)</h3>
+                    <div class="iframe-preview-container">
+                        <iframe id="scorecard-preview-iframe" src="../live/index.html?viewMode=admin_iframe_preview" title="Scorecard Preview"></iframe>
+                    </div>
+                    <p class="preview-note">Note: Preview shows draft settings. Click "Save & Update Preview" to see changes.</p>
+                    
+                    <div class="action-buttons preview-actions">
+                                            <button id="save-update-preview-button" class="button-primary">Save & Update Preview</button>
+                    <button id="open-obs-view-button" class="button-secondary">Open OBS View (Ad-Free)</button>
+                    <button id="go-live-button" class="button-go-live">Go Live!</button>
+                </div>
+                    <p id="admin-status-message" class="status-message preview-status-message"></p>
+                </section>
+
+                <section class="admin-control-panel">
+                    <h2>Admin Controls</h2>
+
+                    <div class="control-group">
+                        <label for="api-key">API Key / Endpoint URL (for Public Live Scorecard)</label>
+                        <input type="text" id="api-key" placeholder="Enter API Key or full JSON Endpoint URL">
+                        <button id="fetch-api-data-button" class="button-fetch-api" style="margin-top: 10px;">Fetch & Populate Fields</button>
+                    </div>
+
+                    <hr class="section-divider">
+                    <h3>Display Text Configuration</h3>
+                    <div class="control-group">
+                        <label for="admin-series-name">Series Name</label>
+                        <input type="text" id="admin-series-name" placeholder="e.g., ICC T20 World Cup 2024">
+                    </div>
+                    <div class="control-group">
+                        <label for="admin-match-title">Match Title</label>
+                        <input type="text" id="admin-match-title" placeholder="e.g., MATCH 10: Team A vs Team B">
+                    </div>
+
+                    <hr class="section-divider">
+                    <h3>Team Configuration</h3>
+                    <div class="teams-config-container">
+                        <div class="team-config-group">
+                            <h4>Team 1 (Home/First Listed)</h4>
+                            <div class="control-group">
+                                <label for="team1-name-override">Team 1 Name</label>
+                                <input type="text" id="team1-name-override" placeholder="Enter Team 1 Name">
+                            </div>
+                            <div class="control-group">
+                                <label for="team1-logo-url-manual">Team 1 Logo URL</label>
+                                <input type="text" id="team1-logo-url-manual" placeholder="http://.../logo.png">
+                            </div>
+                            <div class="control-group">
+                                <label for="team1-logo-upload">Team 1 Logo Fallback (Upload)</label>
+                                <input type="file" id="team1-logo-upload" accept="image/*">
+                                <img id="team1-logo-preview-img" src="#" alt="Team 1 Logo Preview" style="max-width: 50px; max-height: 50px; display: none; margin-top: 5px; border: 1px solid #ccc;">
+                            </div>
+                        </div>
+
+                        <div class="team-config-group">
+                            <h4>Team 2 (Away/Second Listed)</h4>
+                            <div class="control-group">
+                                <label for="team2-name-override">Team 2 Name</label>
+                                <input type="text" id="team2-name-override" placeholder="Enter Team 2 Name">
+                            </div>
+                            <div class="control-group">
+                                <label for="team2-logo-url-manual">Team 2 Logo URL</label>
+                                <input type="text" id="team2-logo-url-manual" placeholder="http://.../logo.png">
+                            </div>
+                            <div class="control-group">
+                                <label for="team2-logo-upload">Team 2 Logo Fallback (Upload)</label>
+                                <input type="file" id="team2-logo-upload" accept="image/*">
+                                <img id="team2-logo-preview-img" src="#" alt="Team 2 Logo Preview" style="max-width: 50px; max-height: 50px; display: none; margin-top: 5px; border: 1px solid #ccc;">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="section-divider">
+                    <h3>Preview Specific Overrides (Static for Preview Iframe)</h3>
+                    <p class="preview-note">These settings ONLY affect the iframe preview above when "Save & Update Preview" is clicked. They are NOT part of the "Go Live" config for dynamic data.</p>
+                    <div class="control-group">
+                        <label for="admin-match-status-preview">Match Status (for Preview)</label>
+                        <input type="text" id="admin-match-status-preview" placeholder="e.g., LIVE | ODI, MATCH FINISHED">
+                    </div>
+                    <div class="control-group">
+                        <label for="admin-winning-team-preview">Winning Team (for Preview)</label>
+                        <input type="text" id="admin-winning-team-preview" placeholder="Team Name or 'Match Tied'">
+                    </div>
+                     <div class="control-group">
+                        <label for="team1-score-preview">Team 1 Score (for Preview, e.g., 150-5)</label>
+                        <input type="text" id="team1-score-preview" placeholder="e.g., 150-5">
+                    </div>
+                    <div class="control-group">
+                        <label for="team1-overs-preview">Team 1 Overs (for Preview, e.g., 20.0)</label>
+                        <input type="text" id="team1-overs-preview" placeholder="e.g., 20.0">
+                    </div>
+                     <div class="control-group">
+                        <label for="team2-score-preview">Team 2 Score (for Preview, e.g., 140-8)</label>
+                        <input type="text" id="team2-score-preview" placeholder="e.g., 140-8">
+                    </div>
+                    <div class="control-group">
+                        <label for="team2-overs-preview">Team 2 Overs (for Preview, e.g., 19.2)</label>
+                        <input type="text" id="team2-overs-preview" placeholder="e.g., 19.2">
+                    </div>
+                     <div class="control-group">
+                        <label for="current-overs-preview">Overall Current Overs (for Preview)</label>
+                        <input type="text" id="current-overs-preview" placeholder="e.g., 10.3">
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="admin-footer-config-display">
+            <p>Current Public API Key Target: <strong id="admin-public-api-key-display">None Set</strong></p>
+            <p>© <span id="current-year"></span> cricketizlive.com - Admin Panel</p>
+        </footer>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>
