@@ -1,0 +1,14 @@
+{
+    "apiKey": "",
+    "seriesName": "No Live Match Currently",
+    "matchTitle": "Please check back later",
+    "team1": {
+        "name": "Team A",
+        "logo": null
+    },
+    "team2": {
+        "name": "Team B",
+        "logo": null
+    },
+    "matchActive": false
+}
